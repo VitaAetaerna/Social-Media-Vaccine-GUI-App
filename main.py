@@ -8,35 +8,6 @@ from kivymd.uix.button import MDIconButton
 import random
 Window.size = (300, 500)
 
-Personal = '''
-MDFillRoundFlatIconButton:
-    text: "                           Private | Personal                    "
-    icon: "information"
-    pos: 0, 260
-    size_hint_y: 0.15
-    width:300
-    height: 250
-'''
-
-School = '''
-MDFillRoundFlatIconButton:
-    text: "                                Public | School                     "
-    icon: "school"
-    pos: 0, 180
-    size_hint_y: 0.15
-    width:300
-    height: 250
-'''
-Festival = '''
-MDFillRoundFlatIconButton:
-    text: "                           Public | Festival                       "
-    icon: "microphone"
-    pos: 0, 100
-    size_hint_y: 0.15
-    width:300
-    height: 250
-'''
-
 
 tbar = ''' 
 MDScreen:
@@ -53,9 +24,17 @@ MDScreen:
             badge_icon: "numeric-1"
 
             MDFillRoundFlatIconButton:
+                text: "                           Your Groups                             "
+                icon: "human-greeting"
+                pos: 0, 340
+                size_hint_y: 0.15
+                width:300
+                height: 250
+
+            MDFillRoundFlatIconButton:
                 text: "                           Private | Personal                    "
                 icon: "information"
-                pos: 0, 260
+                pos: 0, 230
                 size_hint_y: 0.15
                 width:300
                 height: 250
@@ -63,7 +42,7 @@ MDScreen:
             MDFillRoundFlatIconButton:
                 text: "                                Public | School                     "
                 icon: "school"
-                pos: 0, 180
+                pos: 0, 150
                 size_hint_y: 0.15
                 width:300
                 height: 250
@@ -71,7 +50,7 @@ MDScreen:
             MDFillRoundFlatIconButton:
                 text: "                           Public | Festival                       "
                 icon: "microphone"
-                pos: 0, 100
+                pos: 0, 60
                 size_hint_y: 0.15
                 width:300
                 height: 250
@@ -120,9 +99,50 @@ MDScreen:
             text: 'Settings'
             icon: 'account-settings'
 
-            MDLabel:
-                text: 'Settings'
-                halign: 'center'
+            MDTextField:
+                mode: "round"
+                max_text_length: 15
+                line_color_focus: "green"
+                helper_text: "Username"
+                helper_text_mode: "persistent"
+                hint_text: "Enter new Name"
+                icon_right: "account"
+                icon_right_color: app.theme_cls.primary_color
+                pos: 0, 200
+                size_hint_x:None
+                width:300
+
+            MDTextField:
+                mode: "round"
+                max_text_length: 15
+                line_color_focus: "green"
+                helper_text: "Password"
+                helper_text_mode: "persistent"
+                hint_text: "Enter new Password"
+                icon_right: "key"
+                icon_right_color: app.theme_cls.primary_color
+                pos: 0, 135
+                size_hint_x:None
+                width:300
+
+            MDFillRoundFlatIconButton:
+                text: "        Delete Account                                    "
+                md_bg_color: "red"
+                icon: "delete-forever"
+                pos: 10, 25
+                size_hint_y: 0.1
+
+            MDFillRoundFlatIconButton:
+                text: "        Dark/Light Mode                                 "
+                icon: "theme-light-dark"
+                pos: 10, 265
+                size_hint_y: 0.1
+
+            MDFillRoundFlatIconButton:
+                text: "        Read AGB                                      "
+                icon: "book-open"
+                pos: 10, 265
+                size_hint_y: 0.1
 '''
 
 
@@ -130,7 +150,7 @@ MDScreen:
 
 
 
-class SaveItForLaterApp(MDApp):
+class VaccineApp(MDApp):
     def build(self):
         self.theme_cls.material_style = "M2"
         self.theme_cls.primary_palette = "Green"
@@ -139,19 +159,11 @@ class SaveItForLaterApp(MDApp):
 
 
 
-#TXT FIELDS
-        self.school = Builder.load_string(School)
-        self.festival = Builder.load_string(Festival)
-        self.personal = Builder.load_string(Personal)
-        self.Toolb = Builder.load_string(tbar)
-#ADD TO WIDGETS
-        screen.add_widget(self.school)
-        screen.add_widget(self.festival)
-        screen.add_widget(self.personal)
 
+        self.Toolb = Builder.load_string(tbar)
         screen.add_widget(self.Toolb)
 
 
         return screen
 
-SaveItForLaterApp().run()
+VaccineApp().run()
