@@ -7,8 +7,8 @@ from kivymd.uix.button import MDRectangleFlatButton, MDFloatingActionButton
 from kivymd.uix.button import MDIconButton
 import random
 Window.size = (300, 500)
-
-
+#https://gitlab.com/kivymd/KivyMD/blob/master/kivymd/icon_definitions.py#L4
+#https://kivymd.readthedocs.io/en/latest/
 tbar = ''' 
 MDScreen:
 
