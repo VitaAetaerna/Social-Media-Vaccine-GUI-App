@@ -1,51 +1,90 @@
-from kivy.lang import Builder
-from kivy.core.window import Window
-from kivymd.uix.screen import Screen
-from kivymd.uix.button import MDFillRoundFlatIconButton, MDIconButton
 from kivymd.app import MDApp
-Window.size = (300,500)
+from kivymd.uix.screen import Screen
+from kivy.core.window import Window
+from kivy.lang import Builder
+from plyer import notification
+from kivymd.uix.button import MDRectangleFlatButton, MDFloatingActionButton
+from kivymd.uix.button import MDIconButton
+Window.size = (300, 500)
 
 #ICONS https://gitlab.com/kivymd/KivyMD/blob/master/kivymd/icon_definitions.py#L4
 
-TaskField1 = """
-MDTextField:
-    hint_text: "Enter task 3"
-    icon_right: "calendar-clock"
-    icon_right_color: app.theme_cls.primary_color
-    pos: 0, 300
-    size_hint_x:None
+#KV FILE
+
+
+
+Personal = '''
+MDFillRoundFlatIconButton:
+    text: "                           Private | Personal                    "
+    icon: "information"
+    pos: 0, 260
+    size_hint_y: 0.15
     width:300
-"""
+    height: 250
+'''
 
-BottomBar = '''
-MDBoxLayout:
-    md_bg_color: "#1E1E15"
-
-    # Will always be at the bottom of the screen.
-    MDBottomAppBar:
-        MDTopAppBar:
-            icon: "home"
-            type: "bottom"
-            left_action_items: [["human-male-female", lambda y: y]]
-            right_action_items: [["account-settings", lambda y:y]]
-
+School = '''
+MDFillRoundFlatIconButton:
+    text: "                                Public | School                     "
+    icon: "school"
+    pos: 0, 180
+    size_hint_y: 0.15
+    width:300
+    height: 250
+'''
+Festival = '''
+MDFillRoundFlatIconButton:
+    text: "                           Public | Festival                       "
+    icon: "microphone"
+    pos: 0, 100
+    size_hint_y: 0.15
+    width:300
+    height: 250
 '''
 
 
 
+#END
 
-class Example(MDApp):
+#DESIGN  (KV)
+tbar = """
+Screen:
+    BoxLayout:
+        MDBottomAppBar:
+            MDTopAppBar:
+                icon: "home"
+                type: "bottom"
+                left_action_items: [["human-male-female", lambda y: y]]
+                right_action_items: [["account-settings", lambda y:y]]
+
+"""
+
+
+#END
+
+
+
+class SaveItForLaterApp(MDApp):
     def build(self):
         self.theme_cls.material_style = "M2"
-        self.theme_cls.theme_style = "Dark"
         self.theme_cls.primary_palette = "Green"
+        self.theme_cls.primary_hue = '300'
         screen = Screen()
 
-        self.field1 = Builder.load_string(TaskField1)
-        screen.add_widget(self.field1)
-        
-        self.bbar = Builder.load_string(BottomBar)
-        screen.add_widget(self.bbar)
+
+#TXT FIELDS
+        self.school = Builder.load_string(School)
+        self.festival = Builder.load_string(Festival)
+        self.personal = Builder.load_string(Personal)
+        self.Toolb = Builder.load_string(tbar)
+#ADD TO WIDGETS
+        screen.add_widget(self.school)
+        screen.add_widget(self.festival)
+        screen.add_widget(self.personal)
+
+        screen.add_widget(self.Toolb)
+
 
         return screen
-Example().run()
+
+SaveItForLaterApp().run()
