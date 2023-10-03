@@ -4,11 +4,9 @@ from kivy.core.window import Window
 from kivy.lang import Builder
 from kivymd.uix.button import MDRectangleFlatButton, MDFloatingActionButton
 from kivymd.uix.button import MDIconButton
-import random
 Window.size = (300, 500)
-#https://gitlab.com/kivymd/KivyMD/blob/master/kivymd/icon_definitions.py#L4
-#https://kivymd.readthedocs.io/en/latest/
-tbar = ''' 
+
+mainscreen = ''' 
 MDScreen:
 
     MDBottomNavigation:
@@ -27,7 +25,11 @@ MDScreen:
                 icon: "account-switch"
                 pos: 250, 380
                 md_bg_color: app.theme_cls.primary_color
-                
+
+            MDIconButton:
+                icon: "plus"
+                pos: 10, 380
+                md_bg_color: app.theme_cls.primary_color               
                 
             MDFillRoundFlatIconButton:
                 text: "                           Your Groups                             "
@@ -167,26 +169,18 @@ MDScreen:
         
 '''
 
-
-#END
-
-
-
-class VaccineApp(MDApp):
+class VacWatchApp(MDApp):
     def build(self):
         self.theme_cls.material_style = "M2"
         self.theme_cls.primary_palette = "Green"
         self.theme_cls.primary_hue = '300'
         screen = Screen()
 
-
-
-
-        self.Toolb = Builder.load_string(tbar)
-        screen.add_widget(self.Toolb)
+        self.mainbar = Builder.load_string(mainscreen)
+        screen.add_widget(self.mainbar)
         
 
         return screen
 
 
-VaccineApp().run()
+VacWatchApp().run()
